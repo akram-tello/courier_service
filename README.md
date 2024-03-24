@@ -58,6 +58,16 @@ Run the following command to install the required node modules:
 npm install
 ```
 
+
+3. **Running the Application**
+
+To start the application, run:
+
+```bash
+node index.js
+```
+
+
 ### Development Best Practices
 
 - **Clean Code**: We strive to write clean, readable, and maintainable code. This includes using meaningful variable and function names, organizing code logically, and commenting where necessary.
