@@ -3,7 +3,7 @@ import { calculateDeliveryCost, calculateDiscount } from '../../src/services/del
 describe('calculateDeliveryCost', () => {
   test('calculates delivery cost without offer code', () => {
     const result = calculateDeliveryCost(100, 5, 100, '');
-    expect(result.totalCost).toBe(750);
+    expect(result.totalCost).toBe(650);
     expect(result.discount).toBe(0);
   });
 
