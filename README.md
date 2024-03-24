@@ -19,24 +19,25 @@ courier_service/
 │   │   ├── deliveryCostCalculator.js
 │   │   └── offerService.js
 │   │
-│   └── utils/              # Utility functions, if any
+│   └── utils/              # Utility functions
 │       └── inputHandler.js
 │
 ├── tests/                  # Test files
 │   ├── services/
-│   │   ├── deliveryCostCalculator.test.js
-│   │   └── offerService.test.js
+│   │   ├── deliveryCostCalculator.test.js  # Tests for delivery cost calculation
+│   │   └── offerService.test.js            # Tests for offer service logic
 │   │
 │   └── utils/
-│       └── inputHandler.test.js
+│       └── inputHandler.test.js            # Tests for input handling
 │
 ├── node_modules/           # Node.js modules (not included in the repository)
 │
+├── .babelrc                # Babel configuration for ES6+ support
+├── jest.config.cjs         # Jest configuration for handling tests
 ├── .gitignore              # Specifies intentionally untracked files to ignore
 ├── package.json            # Project metadata and dependencies
 ├── package-lock.json       # Locked versions of the entire dependency tree
 └── index.js                # Entry point of the application
-
 ```
 
 
@@ -67,6 +68,13 @@ To start the application, run:
 node index.js
 ```
 
+4. **Running Tests**
+
+To run the tests, use the following command:
+
+```bash
+npm test
+```
 
 ### Development Best Practices
 
