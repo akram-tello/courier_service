@@ -8,6 +8,7 @@
 
 ### Directory Structure
 
+```bash
 courier_service/
 │
 ├── src/                    # Source files
@@ -36,6 +37,7 @@ courier_service/
 ├── package-lock.json       # Locked versions of the entire dependency tree
 └── index.js                # Entry point of the application
 
+```
 
 
 ### Setup Instructions
