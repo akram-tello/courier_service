@@ -46,7 +46,7 @@ Follow these steps to set up the project locally:
 
 1. **Clone the Repository**
 ```bash
-git clone [https://github.com/akram-tello/courier_service]
+git clone https://github.com/akram-tello/courier_service.git
 cd courier_service
 ```
 
