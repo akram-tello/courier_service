@@ -8,34 +8,34 @@
 
 ### Directory Structure
 
-Here is an overview of the project's directory structure:
-project-root/
+courier_service/
 │
-├── src/ # Source files
-│ ├── constants/ # Constant values, e.g., offer codes
-│ │ └── offers.js # Offer codes and their criteria
-│ │
-│ ├── services/ # Business logic
-│ │ ├── deliveryCostCalculator.js # Calculates delivery cost
-│ │ └── offerService.js # Handles offer-related logic
-│ │
-│ └── utils/ # Utility functions
-│ └── inputHandler.js # Handles command-line inputs
+├── src/                    # Source files
+│   ├── constants/          # Constant values, e.g., offer codes
+│   │   └── offers.js
+│   │
+│   ├── services/           # Business logic
+│   │   ├── deliveryCostCalculator.js
+│   │   └── offerService.js
+│   │
+│   └── utils/              # Utility functions, if any
+│       └── inputHandler.js
 │
-├── tests/ # Test files
-│ ├── services/ # Tests for services
-│ │ ├── deliveryCostCalculator.test.js
-│ │ └── offerService.test.js
-│ │
-│ └── utils/ # Tests for utility functions
-│ └── inputHandler.test.js
+├── tests/                  # Test files
+│   ├── services/
+│   │   ├── deliveryCostCalculator.test.js
+│   │   └── offerService.test.js
+│   │
+│   └── utils/
+│       └── inputHandler.test.js
 │
-├── node_modules/ # Node.js modules (auto-generated)
+├── node_modules/           # Node.js modules (not included in the repository)
 │
-├── .gitignore # Specifies untracked files to ignore
-├── package.json # Project metadata and dependencies
-├── package-lock.json # Dependency tree (auto-generated)
-└── index.js # Entry point of the application
+├── .gitignore              # Specifies intentionally untracked files to ignore
+├── package.json            # Project metadata and dependencies
+├── package-lock.json       # Locked versions of the entire dependency tree
+└── index.js                # Entry point of the application
+
 
 
 ### Setup Instructions
