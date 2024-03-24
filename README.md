@@ -45,8 +45,10 @@ courier_service/
 Follow these steps to set up the project locally:
 
 1. **Clone the Repository**
-git clone [repository-url]
+```bash
+git clone [https://github.com/akram-tello/courier_service]
 cd courier_service
+```
 
 
 2. **Install Dependencies**
@@ -55,8 +57,6 @@ Run the following command to install the required node modules:
 ```bash
 npm install
 ```
-
-Follow the on-screen prompts to interact with the command-line application.
 
 ### Development Best Practices
 
