@@ -17,7 +17,7 @@ The Courier Service project is a command-line application designed to estimate d
 
 Before setting up the project, ensure you have the following installed on your local machine:
 
-- **Node.js**: Download and install Node.js from the official website: [https://nodejs.org](https://nodejs.org).
+- **Node.js**: (version 17.4.0 or later) Download and install Node.js from the official website: [https://nodejs.org](https://nodejs.org).
 - **npm**: Node.js comes with npm (Node Package Manager) installed by default. You can check the version by running `npm -v` in the terminal.
 
 
