@@ -1,9 +1,24 @@
 # courier_service
 
 ## Description
-
+The Courier Service project is a command-line application designed to estimate delivery costs and delivery times for a courier service company. The application supports various functionalities, including cost calculation with offer codes and delivery time estimation based on package weight, distance, and vehicle availability.
 
 ## Project Setup and Structure
+
+### Technologies Used
+
+- **Node.js**: A JavaScript runtime environment that executes JavaScript code outside a web browser.
+- **Jest**: A JavaScript testing framework for Node.js applications.
+- **Babel**: A JavaScript compiler that converts ECMAScript 2015+ code into a backward-compatible version of JavaScript.
+- **ESLint**: A static code analysis tool for identifying problematic patterns found in JavaScript code.
+- **Prettier**: An opinionated code formatter that enforces a consistent coding style.
+
+### Prerequisites
+
+Before setting up the project, ensure you have the following installed on your local machine:
+
+- **Node.js**: Download and install Node.js from the official website: [https://nodejs.org](https://nodejs.org).
+- **npm**: Node.js comes with npm (Node Package Manager) installed by default. You can check the version by running `npm -v` in the terminal.
 
 
 ### Directory Structure
@@ -83,6 +98,27 @@ To run the tests, use the following command:
 ```bash
 npm test
 ```
+
+## Key Functionalities
+
+The Courier Service application offers two main functionalities accessible via a command-line interface (CLI):
+
+### 1. Delivery Cost Calculation
+
+This feature allows users to calculate the delivery cost for a set of packages. It takes into account the weight and distance of each package, applying any applicable discount based on predefined offer codes.
+
+**How to Use:** Run the application and select "Calculate Delivery Cost" from the main menu. Follow the prompts to enter package details, including weight, distance, and offer code (if any).
+
+**Technical Details:** This functionality is implemented in `costEstimator.js` and utilizes services defined in `deliveryCostCalculator.js`. Discounts are calculated based on the rules specified in `offers.js`.
+
+### 2. Delivery Time Estimation
+
+This feature estimates the delivery time for packages given the constraints of vehicle availability, their carrying capacity, and speed. It prioritizes packages based on weight and distance to optimize delivery times.
+
+**How to Use:** Start the application and choose "Estimate Delivery Time" from the menu. You'll be prompted to enter details for each package and vehicle information, including the number of vehicles, their maximum speed, and carrying capacity.
+
+**Technical Details:** The core logic for this feature is located in `deliveryTimeCalculator.js`, with user interactions handled by `deliveryTimeEstimator.js`. Package sorting and time calculation are based on the inputs provided by the user and the configuration settings in `config.js`.
+
 
 ### Development Best Practices
 
