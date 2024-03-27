@@ -53,3 +53,35 @@ export async function getBaseDeliveryCostAndPackages() {
   return { baseDeliveryCost: parseFloat(baseDeliveryCost), packages };
 }
 
+export async function getVehicleInfo() {
+  console.log(chalk.blue("\nEnter Vehicle Information:"));
+
+  const { noOfVehicles, maxSpeed, maxCarriableWeight } = await inquirer.prompt([
+    {
+      type: 'input',
+      name: 'noOfVehicles',
+      message: 'Enter number of vehicles:',
+      validate: input => !isNaN(parseInt(input, 10)) || 'Please enter a valid integer.'
+    },
+    {
+      type: 'input',
+      name: 'maxSpeed',
+      message: 'Enter max speed (km/hr):',
+      validate: input => !isNaN(parseFloat(input)) || 'Please enter a valid number.'
+    },
+    {
+      type: 'input',
+      name: 'maxCarriableWeight',
+      message: 'Enter max carriable weight (kg):',
+      validate: input => !isNaN(parseFloat(input)) || 'Please enter a valid number.'
+    }
+  ]);
+
+  return {
+    noOfVehicles: parseInt(noOfVehicles),
+    maxSpeed: parseFloat(maxSpeed),
+    maxCarriableWeight: parseFloat(maxCarriableWeight)
+  };
+}
+
+
