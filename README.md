@@ -117,7 +117,7 @@ This feature estimates the delivery time for packages given the constraints of v
 
 **How to Use:** Start the application and choose "Estimate Delivery Time" from the menu. You'll be prompted to enter details for each package and vehicle information, including the number of vehicles, their maximum speed, and carrying capacity.
 
-**Technical Details:** The core logic for this feature is located in `deliveryTimeCalculator.js`, with user interactions handled by `deliveryTimeEstimator.js`. Package sorting and time calculation are based on the inputs provided by the user and the configuration settings in `config.js`.
+**Technical Details:** The core logic for this feature is located in `deliveryTimeCalculator.js`, with user interactions handled by `deliveryTimeEstimator.js`. The application can shared configurations from `config.js` to determine vehicle speed and weight limits if need it in the prodction.
 
 
 ### Development Best Practices
