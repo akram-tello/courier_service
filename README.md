@@ -38,9 +38,8 @@ courier_service/
 │   │   ├── offerService.js
 │   │   └── deliveryTimeCalculator.js  # New service for delivery time estimation
 │   │
-│   └── utils/              # Utility functions, including any shared utilities
-│       ├── inputHandler.js
-│       └── sharedUtilities.js        # Any shared utility functions
+│   └── utils/              # Utility functions
+│       └── inputHandler.js      
 │
 ├── tests/                  # Test files for all functionalities
 │   ├── services/
