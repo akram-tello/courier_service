@@ -26,14 +26,12 @@ Before setting up the project, ensure you have the following installed on your l
 ```bash
 courier_service/
 │
+├── config/              # Constant values, e.g., offer codes
+│   └── offers.json         # Offer codes for discount calculations
+│
 ├── src/                    # Source files
-│   ├── cli/                 # Entry points for CLI applications
-│   │   ├── costEstimator.js
+│   ├── cli/                # Entry points for CLI applications
 │   │   └── deliveryTimeEstimator.js
-│   │
-│   ├── constants/          # Constant values, e.g., offer codes, and shared configurations
-│   │   ├── offers.js
-│   │   └── config.js       # Shared configurations like vehicle speed, weight limits
 │   │
 │   ├── services/           # Business logic, including new services
 │   │   ├── deliveryCostCalculator.js
