@@ -1,1 +1,0 @@
-// Shared configurations like vehicle speed, weight limits
