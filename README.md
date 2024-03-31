@@ -34,7 +34,6 @@ courier_service/
 │   │   └── deliveryTimeEstimator.js
 │   │
 │   ├── services/           # Business logic, including new services
-│   │   ├── deliveryCostCalculator.js
 │   │   ├── offerService.js
 │   │   └── deliveryTimeCalculator.js  # New service for delivery time estimation
 │   │

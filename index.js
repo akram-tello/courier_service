@@ -1,7 +1,7 @@
 import inquirer from 'inquirer';
 import chalk from 'chalk';
 import { getBaseDeliveryCostAndPackages, getVehicleInfo } from './src/utils/inputHandler.js';
-import { calculateDeliveryCost } from './src/services/deliveryCostCalculator.js';
+import { calculateDeliveryCost } from './src/services/offerService.js';
 import { DeliveryTimeCalculator } from './src/services/deliveryTimeCalculator.js';
 
 async function mainMenu() {
