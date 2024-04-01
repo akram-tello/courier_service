@@ -13,23 +13,23 @@ async function isOfferCodeValid(offerCode) {
 }
 
 async function calculateDeliveryCost(baseDeliveryCost, weight, distance, offerCode) {
+  // Check for invalid (negative) inputs
+  if (baseDeliveryCost < 0 || weight < 0 || distance < 0) {
+      return { totalCost: NaN, discount: NaN, message: "Error: Invalid numerical inputs." };
+  }
+
   const baseCost = baseDeliveryCost + (weight * 10) + (distance * 5);
   let discount = 0;
   let message = '';
 
-  if (isNaN(baseDeliveryCost) || isNaN(weight) || isNaN(distance)) {
-      return { totalCost: NaN, discount: NaN, message: "Error: Invalid numerical inputs." };
-  }
-
   const OFFERS = await loadOffersConfig();
   const isValidOfferCode = await isOfferCodeValid(offerCode);
 
-  discount = calculateDiscount(baseCost, weight, distance, offerCode, OFFERS);
-
-  if (offerCode) {
-      if (!isValidOfferCode) {
-          message = 'Invalid offer code. No discount applied.';
-      } else if (discount === 0) {
+  if (offerCode && !isValidOfferCode) {
+      message = 'Invalid offer code. No discount applied.';
+  } else {
+      discount = calculateDiscount(baseCost, weight, distance, offerCode, OFFERS);
+      if (offerCode && discount === 0) {
           message = 'Offer code is valid but does not apply to this package.';
       }
   }
