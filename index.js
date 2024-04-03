@@ -51,12 +51,22 @@ async function processPackages() {
 async function processDeliveryTime() {
   const { baseDeliveryCost, packages } = await getBaseDeliveryCostAndPackages();
   const vehicleInfo = await getVehicleInfo();
-  const results = DeliveryTimeCalculator({ baseDeliveryCost, packages, vehicleInfo });
+
+  const deliveryTimeCalculator = new DeliveryTimeCalculator(packages, vehicleInfo);
+  const results = deliveryTimeCalculator.calculate();
 
   console.log(chalk.green('\nEstimated Delivery Times:'));
+  console.log(chalk.green('-----------------------------------------------'));
+  console.log(chalk.green('| ID    | Estimated Delivery Time (hours)   |'));
+  console.log(chalk.green('-----------------------------------------------'));
+  
   results.forEach(result => {
-    console.log(`${result.pkg_id} ${result.discount} ${result.total_cost} ${result.estimated_delivery_time}`);
+    const pkgId = result.pkg_id ? result.pkg_id.toString() : 'Unknown ID';
+    const deliveryTime = result.estimated_delivery_time ? result.estimated_delivery_time.toString() : 'N/A';
+  
+    console.log(chalk.green(`| ${pkgId.padEnd(4)} | ${deliveryTime.padStart(31)} |`));
   });
+  
 }
 
 mainMenu().catch(err => {
