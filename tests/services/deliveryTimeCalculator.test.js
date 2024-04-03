@@ -1,51 +1,32 @@
+// Import necessary modules and classes
 import { DeliveryTimeCalculator } from '../../src/services/deliveryTimeCalculator.js';
+import { describe, it, expect } from '@jest/globals';
 
-describe('Delivery Time Calculator', () => {
-    const vehicleInfo = { noOfVehicles: 2, maxSpeed: 70, maxCarriableWeight: 200 };
-
-    test('ensures correct sorting by weight and secondary by distance', () => {
+describe('DeliveryTimeCalculator', () => {
+    it('accurately calculates delivery times with optimized vehicle loading', () => {
         const packages = [
-            { id: 'PKG1', weight: 100, distance: 100, offerCode: '' },
-            { id: 'PKG2', weight: 100, distance: 200, offerCode: '' },
-            { id: 'PKG3', weight: 50, distance: 150, offerCode: '' },
+            { id: 'PKG1', weight: 50, distance: 30, offerCode: 'OFR001' },
+            { id: 'PKG2', weight: 75, distance: 125, offerCode: 'OFR008' },
+            { id: 'PKG3', weight: 175, distance: 100, offerCode: 'OFR003' },
+            { id: 'PKG4', weight: 110, distance: 60, offerCode: 'OFR002' },
+            { id: 'PKG5', weight: 155, distance: 95, offerCode: 'NA' }
         ];
+        const vehicleInfo = { noOfVehicles: 2, maxSpeed: 70, maxCarriableWeight: 200 };
         const calculator = new DeliveryTimeCalculator(packages, vehicleInfo);
-        const results = calculator.calculate();
-        expect(results.findIndex(r => r.pkg_id === 'PKG2')).toBeGreaterThan(results.findIndex(r => r.pkg_id === 'PKG1'));
-        expect(results.findIndex(r => r.pkg_id === 'PKG3')).toBeGreaterThan(results.findIndex(r => r.pkg_id === 'PKG1'));
-    });
 
-    test('verifies delivery time calculation accuracy', () => {
-        const packages = [
-            { id: 'PKG4', weight: 50, distance: 70, offerCode: '' }, // 1 hour travel time
-        ];
-        const calculator = new DeliveryTimeCalculator(packages, vehicleInfo);
         const results = calculator.calculate();
-        // Considering round trip, total travel time should be 2 hours, formatted as string
-        expect(results.find(r => r.pkg_id === 'PKG4').estimated_delivery_time).toBe('2.00');
-    });
+        const expectedResults = [
+            { pkg_id: 'PKG1', estimated_delivery_time: 3.98 },
+            { pkg_id: 'PKG2', estimated_delivery_time: 1.78 },
+            { pkg_id: 'PKG3', estimated_delivery_time: 1.42 },
+            { pkg_id: 'PKG4', estimated_delivery_time: 0.85 },
+            { pkg_id: 'PKG5', estimated_delivery_time: 4.19 }
+        ];
 
-    test('handles packages exceeding vehicle capacity efficiently', () => {
-        const heavyPackages = [
-            { id: 'PKG5', weight: 150, distance: 100, offerCode: '' },
-            { id: 'PKG6', weight: 150, distance: 200, offerCode: '' },
-            // Assuming maxCarriableWeight is such that only one package can be delivered at a time
-        ];
-        const calculator = new DeliveryTimeCalculator(heavyPackages, vehicleInfo);
-        const results = calculator.calculate();
-        // Ensure that the delivery times account for vehicle capacity limits
-        expect(results.length).toBe(2);
-        expect(parseFloat(results[1].estimated_delivery_time)).toBeGreaterThan(parseFloat(results[0].estimated_delivery_time));
-    });
-
-    test('consistently handles identical packages', () => {
-        const identicalPackages = [
-            { id: 'PKG7', weight: 100, distance: 100, offerCode: '' },
-            { id: 'PKG8', weight: 100, distance: 100, offerCode: '' },
-        ];
-        const calculator = new DeliveryTimeCalculator(identicalPackages, vehicleInfo);
-        const results = calculator.calculate();
-        expect(results[0].pkg_id).not.toBe(results[1].pkg_id); // Simple check to ensure they are processed separately
+        expectedResults.forEach(expected => {
+            const result = results.find(r => r.pkg_id === expected.pkg_id);
+            expect(result).not.toBeNull();
+            expect(parseFloat(result.estimated_delivery_time)).toBeCloseTo(expected.estimated_delivery_time);
+        });
     });
 });
-
